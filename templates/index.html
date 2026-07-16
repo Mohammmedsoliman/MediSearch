@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediSearch | الباحث الطبي الذكي</title>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" class="text-accent"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                <h1><span class="text-primary">Medi</span>Search</h1>
+            </div>
+            <div class="nav-actions">
+                <button id="themeToggle" class="btn-icon" aria-label="Toggle Dark Mode" title="تغيير المظهر">
+                    <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <span class="badge-soft">تحديث مباشر من قواعد البيانات</span>
+            <h2>ابحث عن أي دواء في ثوانٍ</h2>
+            <p>أدخل اسم الدواء التجاري أو المادة الفعالة للحصول على التفاصيل، البدائل، والأسعار المحدثة.</p>
+            
+            <div class="search-box-wrapper">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="searchInput" placeholder="اكتب اسم الدواء (مثال: Panadol)..." autocomplete="off" autofocus>
+                    <button id="searchBtn" class="btn-primary">بحث</button>
+                </div>
+            </div>
+
+            <div class="recent-searches" id="recentSearchesContainer" style="display: none;">
+                <span class="recent-label">عمليات بحث سابقة:</span>
+                <div id="recentTags" class="tags"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="results-section">
+            
+            <div id="loadingSpinner" class="loader-container" style="display: none;">
+                <div class="pulse-loader"></div>
+                <p>جاري البحث في قواعد البيانات...</p>
+            </div>
+
+            <div id="errorMessage" class="alert-message error" style="display: none;">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <span class="msg-text"></span>
+            </div>
+            
+            <div id="resultsActions" class="results-actions" style="display: none;">
+                <p class="results-count" id="resultsCount"></p>
+                <button id="exportPdfBtn" class="btn-outline">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" style="margin-right: 5px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    طباعة النتائج
+                </button>
+            </div>
+
+            <div id="resultsGrid" class="cards-grid">
+            </div>
+        </section>
+    </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
