@@ -87,7 +87,6 @@ MediSearch/
 │
 ├── app.py
 ├── parser.py
-├── config.py
 ├── requirements.txt
 │
 ├── templates/
