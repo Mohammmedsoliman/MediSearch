@@ -154,6 +154,8 @@ python app.py
 ## 📸 Screenshots
 
 ![home](static/images/home.png)
+# ===============================
+![home](static/images/cards.png)
 
 ---
 
