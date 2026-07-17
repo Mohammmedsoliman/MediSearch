@@ -153,7 +153,7 @@ python app.py
 
 ## 📸 Screenshots
 
-> Screenshots will be added soon.
+![home](static/images/home.png)
 
 ---
 
